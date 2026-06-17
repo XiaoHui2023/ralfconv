@@ -24,8 +24,8 @@ tools\pack.bat
 
 | 目标 | 产物 |
 | --- | --- |
-| 主入口（src） | `ralf-conv` / `ralf-conv.exe` |
-| 发布压缩包 | `ralf-conv-<version>-linux.tar.gz` / `ralf-conv-<version>-windows.zip` |
+| 主入口（src） | `ralfconv` / `ralfconv.exe` |
+| 发布压缩包 | `ralfconv-<version>-linux.tar.gz` / `ralfconv-<version>-windows.zip` |
 
 | 平台 | 脚本 | staticx |
 | --- | --- | --- |

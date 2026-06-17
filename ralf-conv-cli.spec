@@ -63,7 +63,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name="ralf-conv",
+    name="ralfconv",
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

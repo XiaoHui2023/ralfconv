@@ -10,7 +10,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
-BINARY_NAMES = ("ralf-conv",)
+BINARY_NAMES = ("ralfconv",)
 RELEASE_PATHS = (
     "example/demo_soc.ralf",
 )
@@ -30,7 +30,7 @@ def _platform_tag() -> str:
 
 def main() -> int:
     dist = ROOT / "dist"
-    tag = f"ralf-conv-{_project_version(ROOT)}-{_platform_tag()}"
+    tag = f"ralfconv-{_project_version(ROOT)}-{_platform_tag()}"
     staging_root = dist / ".release-staging"
     bundle_dir = staging_root / tag
     if staging_root.exists():

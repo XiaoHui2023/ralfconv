@@ -6,8 +6,8 @@
 # 用法（仓库根）：
 #   ./tools/pack.sh [src]     Linux / macOS / Git Bash
 #   bash tools/pack.sh [src]  同上
-# 产物：dist/ralf-conv（Linux 默认经 staticx；PACK_LINUX_SKIP_STATICX=1 时仅 PyInstaller）或 dist/ralf-conv.exe（Windows）；
-#       另有 dist/ralf-conv-<version>-<platform>.tar.gz 或 .zip（示例 RALF 见 tools/bundle_release.py）。
+# 产物：dist/ralfconv（Linux 默认经 staticx；PACK_LINUX_SKIP_STATICX=1 时仅 PyInstaller）或 dist/ralfconv.exe（Windows）；
+#       另有 dist/ralfconv-<version>-<platform>.tar.gz 或 .zip（示例 RALF 见 tools/bundle_release.py）。
 # Linux staticx 另需系统 patchelf（如 apt install patchelf）；PACK_LINUX_SKIP_STATICX=1 时跳过 staticx、勿装 patchelf；macOS 跳过 staticx。
 # 兼容：单文件 ABI 取决于构建机 glibc；Ubuntu 16.04 须在 16.04（或更旧 glibc）环境构建并实测。
 # GitHub Release CI：tools/ci_pack_ubuntu16.sh 导出 PACK_LINUX_SKIP_STATICX=1 后调本脚本。
@@ -81,7 +81,7 @@ build_cli() {
   fi
   echo "==> PyInstaller: $spec"
   "${PYTHON_CMD[@]}" -m PyInstaller --clean --noconfirm "$spec"
-  local dist_name="ralf-conv"
+  local dist_name="ralfconv"
   if [[ -f "$ROOT/dist/${dist_name}.exe" ]]; then
     echo "完成: $ROOT/dist/${dist_name}.exe（Windows：无 staticx 步骤）"
     return 0

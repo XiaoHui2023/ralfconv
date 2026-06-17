@@ -29,7 +29,7 @@ def _parse_byte_offset(text: str) -> int:
 
 def _make_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        prog="ralf-conv",
+        prog="ralfconv",
         description="使用 ralf_model 解析 RALF 并输出 JSON（扁平列表或 block 层次结构）。",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(

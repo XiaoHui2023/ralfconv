@@ -2,7 +2,7 @@
 setlocal EnableExtensions
 rem Pack onefile via PyInstaller; no staticx on Windows. See tools/README.md.
 rem Usage from repo root: tools\pack.bat [src]
-rem Outputs: dist\ralf-conv.exe and dist\ralf-conv-<version>-windows.zip
+rem Outputs: dist\ralfconv.exe and dist\ralfconv-<version>-windows.zip
 cd /d "%~dp0\.."
 
 set "TARGET=%~1"
@@ -51,10 +51,10 @@ echo ==^> PyInstaller: %SPEC%
 "%PY%" -m PyInstaller --clean --noconfirm "%SPEC%"
 if errorlevel 1 exit /b 1
 
-if exist "%CD%\dist\ralf-conv.exe" (
-    echo 完成: %CD%\dist\ralf-conv.exe（Windows：无 staticx 步骤）
+if exist "%CD%\dist\ralfconv.exe" (
+    echo 完成: %CD%\dist\ralfconv.exe（Windows：无 staticx 步骤）
 ) else (
-    echo 错误: 未在 dist 找到 ralf-conv.exe。 >&2
+    echo 错误: 未在 dist 找到 ralfconv.exe。 >&2
     exit /b 1
 )
 

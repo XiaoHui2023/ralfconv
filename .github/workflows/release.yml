@@ -63,5 +63,5 @@ jobs:
           tag_name: ${{ steps.ver.outputs.tag }}
           generate_release_notes: false
           files: |
-            dist/ralf-conv
-            dist/ralf-conv-${{ steps.ver.outputs.version }}-linux.tar.gz
+            dist/ralfconv
+            dist/ralfconv-${{ steps.ver.outputs.version }}-linux.tar.gz
