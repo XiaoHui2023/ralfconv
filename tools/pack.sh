@@ -6,10 +6,11 @@
 # 用法（仓库根）：
 #   ./tools/pack.sh [src]     Linux / macOS / Git Bash
 #   bash tools/pack.sh [src]  同上
-# 产物：dist/ralf-conv（Linux 经 staticx）或 dist/ralf-conv.exe（Windows）；
+# 产物：dist/ralf-conv（Linux 默认经 staticx；PACK_LINUX_SKIP_STATICX=1 时仅 PyInstaller）或 dist/ralf-conv.exe（Windows）；
 #       另有 dist/ralf-conv-<version>-<platform>.tar.gz 或 .zip（示例 RALF 见 tools/bundle_release.py）。
-# Linux staticx 另需系统 patchelf（如 apt install patchelf）；macOS 跳过 staticx。
+# Linux staticx 另需系统 patchelf（如 apt install patchelf）；PACK_LINUX_SKIP_STATICX=1 时跳过 staticx、勿装 patchelf；macOS 跳过 staticx。
 # 兼容：单文件 ABI 取决于构建机 glibc；Ubuntu 16.04 须在 16.04（或更旧 glibc）环境构建并实测。
+# GitHub Release CI：tools/ci_pack_ubuntu16.sh 导出 PACK_LINUX_SKIP_STATICX=1 后调本脚本。
 # Windows 批处理见 tools/pack.bat。
 set -euo pipefail
 
@@ -90,7 +91,13 @@ build_cli() {
     exit 1
   fi
   case "$(uname -s 2>/dev/null || true)" in
-    Linux) apply_staticx_linux "$dist_name" ;;
+    Linux)
+      if [[ "${PACK_LINUX_SKIP_STATICX:-}" == "1" ]]; then
+        echo "完成: $ROOT/dist/${dist_name}（PACK_LINUX_SKIP_STATICX=1，跳过 staticx）"
+      else
+        apply_staticx_linux "$dist_name"
+      fi
+      ;;
     *) echo "完成: $ROOT/dist/${dist_name}（非 Linux，跳过 staticx）" ;;
   esac
 }
