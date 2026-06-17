@@ -6,11 +6,6 @@ cd "$(dirname "${BASH_SOURCE[0]}")/.."
 rm -rf .venv build dist .ci-smoke
 
 export DEBIAN_FRONTEND=noninteractive
-sed -i \
-  -e 's|http://archive.ubuntu.com/ubuntu|http://old-releases.ubuntu.com/ubuntu|g' \
-  -e 's|http://security.ubuntu.com/ubuntu|http://old-releases.ubuntu.com/ubuntu|g' \
-  /etc/apt/sources.list
-
 apt-get update
 apt-get install -y --no-install-recommends \
   bzip2 \
