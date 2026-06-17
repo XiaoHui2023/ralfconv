@@ -77,11 +77,11 @@ jobs:
                 force: true,
               });
             } catch (error) {
-              if (error.status === 422) {
+              if (error.status === 404 || error.status === 422) {
                 await github.rest.git.createRef({
                   owner,
                   repo,
-                  ref: `tags/${tag}`,
+                  ref: `refs/tags/${tag}`,
                   sha,
                 });
               } else {
